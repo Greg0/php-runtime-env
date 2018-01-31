@@ -1,0 +1,49 @@
+version: "3.1"
+services:
+
+    memcached:
+      image: memcached:alpine
+      container_name: food-track-memcached
+
+    mailhog:
+      image: mailhog/mailhog:latest
+      container_name: food-track-mailhog
+      ports:
+        - "8081:8025"
+
+    redis:
+      image: redis:alpine
+      container_name: food-track-redis
+
+    mariadb:
+      image: mariadb:10.1
+      container_name: food-track-mariadb
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=app
+        - MYSQL_USER=admin
+        - MYSQL_PASSWORD=admin
+      ports:
+        - "8083:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: food-track-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./compose/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "8080:80"
+
+    php-fpm:
+      build: compose/php-fpm
+      container_name: food-track-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./compose/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+

@@ -1,0 +1,18 @@
+{
+    "name": "greg0/food-track",
+    "description": "Food management appliaction",
+    "type": "project",
+    "require-dev": {
+        "n": "n",
+        "exi": "exit"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Grzegorz Kuznik",
+            "email": "gerg0sz92@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
