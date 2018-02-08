@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.3"
 services:
 
     memcached:
@@ -18,9 +18,7 @@ services:
     mariadb:
       image: mariadb:10.1
       container_name: food-track-mariadb
-      working_dir: /application
-      volumes:
-        - .:/application
+      working_dir: /var/www
       environment:
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=app
@@ -28,22 +26,33 @@ services:
         - MYSQL_PASSWORD=admin
       ports:
         - "8083:3306"
+#    composer:
+#      build: compose/composer
+#      container_name: food-track-composer
+#      working_dir: /var/www
+#      volumes:
+#        - ./src:/var/www
 
     webserver:
-      image: nginx:alpine
+      build: compose/nginx
       container_name: food-track-webserver
-      working_dir: /application
+      working_dir: /var/www
+      restart: always
+      logging:
+        driver: "json-file"
+        options:
+          max-size: "500k"
+          max-file: "50"
       volumes:
-          - .:/application
-          - ./compose/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+          - ./src:/var/www
+          - ./tmp/logs/nginx:/var/log/nginx
       ports:
        - "8080:80"
 
     php-fpm:
-      build: compose/php-fpm
-      container_name: food-track-php-fpm
-      working_dir: /application
+      build: compose/php
+      container_name: food-track-php
+      working_dir: /var/www
       volumes:
-        - .:/application
-        - ./compose/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
-
+        - ./src:/var/www
+        - ./compose/php/php.ini:/usr/local/etc/php/conf.d/docker-project-override.ini
