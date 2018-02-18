@@ -11,7 +11,7 @@ RUN apk update \
 
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
-COPY entrypoint.sh /bin/entrypoint.sh
-RUN chmod +x /bin/entrypoint.sh
 
-ENTRYPOINT ["/bin/entrypoint.sh"]
+RUN mkdir /.composer
+RUN chown -R $COMPOSE_UID:$COMPOSE_GID /.composer
+RUN chown -R $COMPOSE_UID /var/www
