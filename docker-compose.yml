@@ -48,11 +48,9 @@ services:
       container_name: food-track-php
       working_dir: /var/www
       environment:
-       - USER=${USER}
+       - COMPOSE_UID=1000
+       - COMPOSE_GID=1000
       volumes:
-        # Permissions
-        - /etc/passwd:/etc/passwd:ro
-        - /etc/group:/etc/group:ro
         # Dev
         - ./src:/var/www
         - ./compose/php/php.ini:/usr/local/etc/php/conf.d/docker-project-override.ini

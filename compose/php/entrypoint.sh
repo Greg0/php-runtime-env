@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/ash
 
-chown -R $USER /var/www
-su $USER -c "composer install"
+chown -R $COMPOSE_UID /var/www
+su-exec $COMPOSE_UID:COMPOSE_GID composer install
 php-fpm
