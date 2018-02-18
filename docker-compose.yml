@@ -28,7 +28,7 @@ services:
         - "8083:3306"
 
     webserver:
-      build: compose/nginx
+      build: images/nginx
       container_name: food-track-webserver
       working_dir: /var/www
       restart: always
@@ -44,7 +44,7 @@ services:
        - "8080:80"
 
     php-fpm:
-      build: compose/php
+      build: images/php
       container_name: food-track-php
       working_dir: /var/www
       environment:
