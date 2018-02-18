@@ -44,7 +44,7 @@ services:
        - "8080:80"
 
     php-fpm:
-      build: images/php
+      build: images/php-symfony
       container_name: food-track-php
       working_dir: /var/www
       environment:
