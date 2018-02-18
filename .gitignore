@@ -1,3 +1,4 @@
 /src/vendor/
 /.idea/
 /tmp/**/*.log
+/src/*
