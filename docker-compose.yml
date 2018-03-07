@@ -32,6 +32,8 @@ services:
       container_name: food-track-webserver
       working_dir: /var/www
       restart: always
+      depends_on:
+        - php-fpm
       logging:
         driver: "json-file"
         options:
@@ -47,6 +49,11 @@ services:
       build: images/php-symfony
       container_name: food-track-php
       working_dir: /var/www
+      depends_on:
+        - mariadb
+        - redis
+        - mailhog
+        - memcached
       environment:
        - COMPOSE_UID=1000
        - COMPOSE_GID=1000

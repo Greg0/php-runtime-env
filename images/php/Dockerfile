@@ -6,7 +6,7 @@ RUN apk update \
     && apk add git \ 
     libpng-dev \
     su-exec \
-    && docker-php-ext-install zip \
+    && docker-php-ext-install zip mysqli pdo pdo_mysql \
     && docker-php-ext-enable zip \
     && chmod -R 777 /var/www
 
