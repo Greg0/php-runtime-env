@@ -3,21 +3,21 @@ services:
 
     memcached:
       image: memcached:alpine
-      container_name: food-track-memcached
+      container_name: memcached
 
     mailhog:
       image: mailhog/mailhog:latest
-      container_name: food-track-mailhog
+      container_name: mailhog
       ports:
         - "8081:8025"
 
     redis:
       image: redis:alpine
-      container_name: food-track-redis
+      container_name: redis
 
     mariadb:
       image: mariadb:10.1
-      container_name: food-track-mariadb
+      container_name: mariadb
       working_dir: /var/www
       environment:
         - MYSQL_ROOT_PASSWORD=root
@@ -29,7 +29,7 @@ services:
 
     webserver:
       build: images/nginx
-      container_name: food-track-webserver
+      container_name: webserver
       working_dir: /var/www
       restart: always
       depends_on:
@@ -47,7 +47,7 @@ services:
 
     php-fpm:
       build: images/php-symfony
-      container_name: food-track-php
+      container_name: php
       working_dir: /var/www
       depends_on:
         - mariadb
