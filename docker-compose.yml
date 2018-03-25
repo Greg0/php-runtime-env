@@ -28,7 +28,7 @@ services:
       working_dir: /var/www
       restart: always
       depends_on:
-        - php-fpm
+        - php
       logging:
         driver: "json-file"
         options:
@@ -40,7 +40,7 @@ services:
       ports:
        - "8080:80"
 
-    php-fpm:
+    php:
       build: images/php-symfony
       working_dir: /var/www
       depends_on:

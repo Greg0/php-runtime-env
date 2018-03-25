@@ -8,6 +8,7 @@ RUN apk update \
     su-exec \
     && docker-php-ext-install zip mysqli pdo pdo_mysql \
     && docker-php-ext-enable zip \
+    && chown -R $COMPOSE_UID:$COMPOSE_GID /var/www \
     && chmod -R 777 /var/www
 
 
@@ -15,4 +16,3 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN mkdir /.composer
 RUN chown -R $COMPOSE_UID:$COMPOSE_GID /.composer
-RUN chown -R $COMPOSE_UID /var/www

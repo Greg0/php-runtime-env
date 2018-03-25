@@ -19,7 +19,7 @@ Composer
 To run composer with right file permissions inside container exec
 
 ```
-docker exec -u $(id -u):$(id -g) project-php-fpm composer install
+docker exec -u $(id -u):$(id -g) project_dir_php_1 composer install
 ```
 
 or use official composer image https://store.docker.com/images/composer

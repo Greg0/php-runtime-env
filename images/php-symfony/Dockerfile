@@ -4,11 +4,9 @@ RUN apk add \
     nodejs \
     yarn
 
-RUN mkdir /.cache /.config /var/www/node_modules /var/www/var \
+RUN mkdir /.cache /.config \
     && chown -R $COMPOSE_UID:$COMPOSE_GID /.cache \
-    && chown -R $COMPOSE_UID:$COMPOSE_GID /.config \
-    && chown -R $COMPOSE_UID:$COMPOSE_GID /var/www/node_modules \
-    && chown -R $COMPOSE_UID:$COMPOSE_GID /var/www/var
+    && chown -R $COMPOSE_UID:$COMPOSE_GID /.config
 
 
 # Symfony additional packages
