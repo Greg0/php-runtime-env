@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:fpm-alpine3.7
 WORKDIR /var/www
 ENV COMPOSE_UID 1000
 ENV COMPOSE_GID 1000
