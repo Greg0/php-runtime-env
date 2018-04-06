@@ -7,9 +7,12 @@ If you are NOT going to use custom image `php` in docker-compose you should firs
 docker build -t greg0-php images/php
 ```
 
-Then start containers
+Put your PHP application into `/src` directory. 
+
+Then build and start containers
 
 ```
+docker-composer build
 docker-compose up
 ```
 
