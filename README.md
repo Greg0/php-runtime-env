@@ -23,7 +23,7 @@ docker exec -it project_dir_php_1 composer install
 
 or use official composer image https://store.docker.com/images/composer
 
-> Note: Oficial composer image is used unside `php` container.
+> Note: Official composer image is used unside `php` container.
 
 Permissions in linux volumes
 ===========================
