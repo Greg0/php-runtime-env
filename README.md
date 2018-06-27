@@ -7,6 +7,24 @@ There are scripts to automate using repo:
 * `scripts/compose-up.sh` - launching containers
 * `scripts/images-build.sh` - helper script used by two previous
 
+Files organization
+==================
+
+Nginx listening for files in `/src/public` on port `8080`.
+
+Composer
+========
+
+To run composer inside container exec
+
+```
+docker exec -it project_dir_php_1 composer install
+```
+
+or use official composer image https://store.docker.com/images/composer
+
+> Note: Oficial composer image is used unside `php` container.
+
 Permissions in linux volumes
 ===========================
 
@@ -15,7 +33,7 @@ For fresh docker installation read [Post-installation steps for Linux](https://d
 To avoid permissions issues follow instructions from article 
 "[Use Linux user namespaces to fix permissions in docker volumes](https://www.jujens.eu/posts/en/2017/Jul/02/docker-userns-remap/)"
 
-##### TL;DR;
+#### TL;DR;
 
 Word `USER` in listings should be replaced by your system user name: `id -u -n`
 
@@ -45,14 +63,3 @@ USER:100000:65536
 
 Replace `996` with value returned by command `getent group docker` 
 
-
-Composer
-========
-
-To run composer with right file permissions inside container exec
-
-```
-docker exec -u $(id -u):$(id -g) project_dir_php_1 composer install
-```
-
-or use official composer image https://store.docker.com/images/composer
