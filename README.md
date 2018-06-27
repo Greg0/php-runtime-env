@@ -1,20 +1,50 @@
 Docker-compose
 ==============
 
-If you are NOT going to use custom image `php` in docker-compose you should first build it with tag `greg0-php`, because other images extends it.
+There are scripts to automate using repo:
+
+* `scripts/compose-init.sh` - execute on first use. Builds images and containers
+* `scripts/compose-up.sh` - launching containers
+* `scripts/images-build.sh` - helper script used by two previous
+
+Permissions in linux volumes
+===========================
+
+For fresh docker installation read [Post-installation steps for Linux](https://docs.docker.com/install/linux/linux-postinstall/)
+
+To avoid permissions issues follow instructions from article 
+"[Use Linux user namespaces to fix permissions in docker volumes](https://www.jujens.eu/posts/en/2017/Jul/02/docker-userns-remap/)"
+
+##### TL;DR;
+
+Word `USER` in listings should be replaced by your system user name: `id -u -n`
+
+
+1. Create or add to existing file `/etc/docker/daemon.json`
+
+```javascript
+{
+    "userns-remap": "USER"
+}
+```
+
+2. Edit file `/etc/subuid`
 
 ```
-docker build -t greg0-php images/php
+USER:1000:1
+USER:100000:65536
 ```
 
-Put your PHP application into `/src` directory. 
 
-Then build and start containers
+3. Edit file `/etc/subgid`
 
 ```
-docker-composer build
-docker-compose up
+USER:996:1
+USER:100000:65536
 ```
+
+Replace `996` with value returned by command `getent group docker` 
+
 
 Composer
 ========

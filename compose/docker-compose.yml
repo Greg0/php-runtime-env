@@ -13,7 +13,7 @@ services:
       image: redis:alpine
 
     mariadb:
-      image: mariadb:10.1
+      image: mariadb:latest
       working_dir: /var/www
       environment:
         - MYSQL_ROOT_PASSWORD=root
@@ -24,7 +24,7 @@ services:
         - "8083:3306"
 
     webserver:
-      build: images/nginx
+      image: greg0-nginx
       working_dir: /var/www
       restart: always
       depends_on:
@@ -35,23 +35,20 @@ services:
           max-size: "500k"
           max-file: "50"
       volumes:
-          - ./src:/var/www
-          - ./tmp/logs/nginx:/var/log/nginx
+          - ../src:/var/www
+          - ../tmp/logs/nginx:/var/log/nginx
       ports:
        - "8080:80"
 
     php:
-      build: images/php-symfony
+      image: greg0-php
       working_dir: /var/www
       depends_on:
         - mariadb
         - redis
         - mailhog
         - memcached
-      environment:
-       - COMPOSE_UID=1000
-       - COMPOSE_GID=1000
       volumes:
         # Dev
-        - ./src:/var/www
-        - ./images/php/php.ini:/usr/local/etc/php/conf.d/docker-project-override.ini
+        - ../src:/var/www
+        - ../images/php/php.ini:/usr/local/etc/php/conf.d/docker-project-override.ini
