@@ -51,4 +51,4 @@ services:
       volumes:
         # Dev
         - ../src:/var/www
-        - ../images/php/php.ini:/usr/local/etc/php/conf.d/docker-project-override.ini
+        - ../images/php/php.ini:/usr/local/etc/php/conf.d/docker-php-project.ini

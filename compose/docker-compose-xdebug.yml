@@ -2,3 +2,8 @@ version: "3.3"
 services:
     php:
       image: greg0-php-dev
+      volumes:
+        # Dev
+        - ../src:/var/www
+        - ../images/php/php.ini:/usr/local/etc/php/conf.d/docker-php-project.ini
+        - ../images/php-dev/php.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug2.ini
