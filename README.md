@@ -12,7 +12,7 @@ There are scripts to automate using repo:
 Files organization
 ==================
 
-Nginx listening for files in `/src/public` on port `8080`.
+Nginx listening for files in `src/public/` on port `8080`.
 
 Composer
 ========
