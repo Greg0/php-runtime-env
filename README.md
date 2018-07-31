@@ -1,6 +1,8 @@
 Docker-compose
 ==============
 
+Put your PHP application into `src/` and public files (e.g. `index.php`) into `src/public/`
+
 There are scripts to automate using repo:
 
 * `scripts/compose-init.sh` - execute on first use. Builds images and containers
