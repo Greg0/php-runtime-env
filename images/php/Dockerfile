@@ -4,7 +4,6 @@ WORKDIR /var/www
 RUN apk update \
     && apk add git \ 
     libpng-dev \
-    su-exec \
     $PHPIZE_DEPS \
     && pecl install redis \
     && docker-php-ext-install zip mysqli pdo pdo_mysql \
