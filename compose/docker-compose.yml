@@ -10,7 +10,7 @@ services:
         - "8081:8025"
 
     redis:
-      image: redis:alpine
+      image: redis:4.0.11-alpine
 
     mariadb:
       image: mariadb:latest
