@@ -6,8 +6,11 @@ services:
 
     mailhog:
       image: mailhog/mailhog:latest
+      environment:
+        - MH_STORAGE=maildir
+      volumes:
+        - ../tmp/mail:/maildir:rw,delegated
       ports:
-        - "1025:1025"
         - "8025:8025"
 
     redis:
