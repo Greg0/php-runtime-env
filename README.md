@@ -5,9 +5,7 @@ Put your PHP application into `src/` and public files (e.g. `index.php`) into `s
 
 There are scripts to automate using repo:
 
-* `scripts/compose-init.sh` - execute on first use. Builds images and containers
 * `scripts/compose-up.sh` - launching containers
-* `scripts/images-build.sh` - helper script used by two previous
 
 Files organization
 ==================
