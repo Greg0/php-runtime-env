@@ -28,7 +28,7 @@ services:
         - "8083:3306"
 
     nginx:
-      image: greg0-nginx
+      image: greg0/php-app-docker-compose-environment:nginx
       working_dir: /var/www
       restart: always
       depends_on:
@@ -45,7 +45,7 @@ services:
        - "8080:80"
 
     php:
-      image: greg0-php
+      image: greg0/php-app-docker-compose-environment:php
       working_dir: /var/www
       depends_on:
         - mariadb
