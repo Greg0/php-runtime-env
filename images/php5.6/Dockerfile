@@ -7,7 +7,7 @@ RUN apk update \
     $PHPIZE_DEPS \
     openssh-client \
     libzip-dev \
-    && pecl install redis \
+    && pecl install redis-2.2.8 \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure zip --with-libzip=/usr/include \
     && docker-php-ext-configure gd \
