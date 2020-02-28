@@ -1,7 +1,7 @@
 version: "3.3"
 services:
     php:
-      image: greg0/php-app-docker-compose-environment:php-dev
+      image: greg0/php-runtime-env:php7.3-dev
       volumes:
         # Dev
         - ../src:/var/www

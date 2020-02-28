@@ -1,4 +1,4 @@
-FROM greg0/php-app-docker-compose-environment:php
+FROM greg0/php-runtime-env:php5.6
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
