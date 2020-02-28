@@ -55,5 +55,5 @@ services:
       volumes:
         # Dev
         - ../src:/var/www
-        - ../images/php/php.ini:/usr/local/etc/php/conf.d/docker-php-project.ini
+        - ../images/php-config/php.ini:/usr/local/etc/php/conf.d/docker-php-project.ini
         - ../data/ssh:/root/.ssh
