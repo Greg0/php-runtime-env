@@ -6,12 +6,14 @@ services:
 
     mailhog:
       image: mailhog/mailhog:latest
-      environment:
-        - MH_STORAGE=maildir
+      restart: always
+      privileged: true
+      command: ["-storage=maildir", "-maildir-path=/maildir"]
       volumes:
         - ../tmp/mail:/maildir:rw,delegated
       ports:
-        - "8025:8025"
+        - 1025:1025
+        - 8025:8025
 
     redis:
       image: redis:4.0.11-alpine
