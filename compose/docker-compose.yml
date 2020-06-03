@@ -47,7 +47,7 @@ services:
        - "8080:80"
 
     php:
-      image: greg0/php-runtime-env:php7.3
+      image: greg0/php-runtime-env:php7.4
       working_dir: /var/www
       depends_on:
         - mariadb
