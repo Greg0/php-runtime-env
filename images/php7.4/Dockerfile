@@ -9,7 +9,7 @@ RUN apk update \
     libzip-dev \
     && pecl install redis \
     && docker-php-ext-configure intl \
-    && docker-php-ext-configure zip --with-libzip=/usr/include \
+    && docker-php-ext-configure zip \
     && docker-php-ext-configure gd \
     && docker-php-ext-install gd intl exif zip mysqli pdo pdo_mysql  \
     && docker-php-ext-enable gd intl exif zip redis
