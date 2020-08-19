@@ -20,7 +20,6 @@ services:
 
     mariadb:
       image: mariadb:latest
-      working_dir: /var/www
       environment:
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=app
@@ -28,6 +27,8 @@ services:
         - MYSQL_PASSWORD=admin
       ports:
         - "8083:3306"
+      volumes: 
+        - ../images/mariadb:/etc/mysql/conf.d
 
     nginx:
       image: greg0/php-runtime-env:nginx
@@ -58,4 +59,5 @@ services:
         # Dev
         - ../src:/var/www
         - ../images/php-config/php.ini:/usr/local/etc/php/conf.d/docker-php-project.ini
+        - ../images/php-config/fpm.conf:/usr/local/etc/php-fpm.d/zz-wwww.conf
         - ../data/ssh:/root/.ssh

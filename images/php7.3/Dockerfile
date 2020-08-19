@@ -8,6 +8,7 @@ RUN apk update \
     openssh-client \
     libzip-dev \
     && pecl install redis \
+    && docker-php-ext-install bcmath \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure zip --with-libzip=/usr/include \
     && docker-php-ext-configure gd \
