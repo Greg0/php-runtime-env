@@ -6,7 +6,6 @@ services:
 
     mailhog:
       image: mailhog/mailhog:latest
-      restart: always
       privileged: true
       command: ["-storage=maildir", "-maildir-path=/maildir"]
       volumes:
@@ -33,7 +32,6 @@ services:
     nginx:
       image: greg0/php-runtime-env:nginx
       working_dir: /var/www
-      restart: always
       depends_on:
         - php
       logging:
