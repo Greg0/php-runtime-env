@@ -11,7 +11,7 @@ RUN apk update \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure zip \
     && docker-php-ext-configure gd \
-    && docker-php-ext-install gd intl exif zip mysqli pdo pdo_mysql  \
+    && docker-php-ext-install gd intl exif zip mysqli pdo pdo_mysql sockets  \
     && docker-php-ext-enable gd intl exif zip redis
 
 # MailHog
