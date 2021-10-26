@@ -22,7 +22,7 @@ RUN mv mhsendmail_linux_amd64 /usr/bin/mhsendmail
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # Entrypoint overwrite
-COPY docker-extend-entrypoint /usr/local/bin/
+COPY ../common/php/docker-extend-entrypoint /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-extend-entrypoint
 
 ENTRYPOINT ["docker-extend-entrypoint"]
