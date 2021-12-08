@@ -68,5 +68,12 @@ USER:996:1
 USER:100000:65536
 ```
 
-Replace `996` with value returned by command `getent group docker` 
+Replace `996` with value returned by command `getent group docker`
 
+---
+
+Instead of above you can also often run
+
+```shell
+chown $(id -un) -R .
+```
