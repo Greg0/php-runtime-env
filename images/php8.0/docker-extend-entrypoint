@@ -1,0 +1,8 @@
+#!/bin/sh
+FILE=~/.ssh/id_rsa
+if test -f "$FILE"; then
+  eval `ssh-agent -s`
+  ssh-add $FILE
+fi
+
+exec docker-php-entrypoint "$@"
