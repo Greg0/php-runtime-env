@@ -4,6 +4,9 @@ RUN apk update \
     && apk add git \
     libpng-dev \
     icu-dev \
+    curl \
+    vim \
+    nano \
     $PHPIZE_DEPS \
     openssh-client \
     libzip-dev \
