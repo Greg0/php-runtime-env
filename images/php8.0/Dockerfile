@@ -28,5 +28,7 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY docker-extend-entrypoint /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-extend-entrypoint
 
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
 ENTRYPOINT ["docker-extend-entrypoint"]
 CMD ["php-fpm"]
