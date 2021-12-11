@@ -1,4 +1,6 @@
 /.idea/
+/.history/
 /tmp/**/*.log
+/tmp/**/*.example
 /src/*
 /data/ssh/*
