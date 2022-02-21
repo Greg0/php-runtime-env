@@ -46,7 +46,7 @@ services:
        - "8080:80"
 
     php:
-      image: greg0/php-runtime-env:php7.4
+      image: greg0/php-runtime-env:php${PHP_VERSION}
       working_dir: /var/www
       depends_on:
         - mariadb
@@ -59,3 +59,5 @@ services:
         - ../images/php-config/php.ini:/usr/local/etc/php/conf.d/docker-php-project.ini
         - ../images/php-config/fpm.conf:/usr/local/etc/php-fpm.d/zz-wwww.conf
         - ../data/ssh:/root/.ssh
+      extra_hosts:
+        - "host.docker.internal:host-gateway"

@@ -1,4 +1,4 @@
-FROM greg0/php-runtime-env:php7.4
+FROM greg0/php-runtime-env:php8.1
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug

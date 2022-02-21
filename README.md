@@ -2,7 +2,7 @@ Image build
 ===========
 
 ```shell
-make build image=8.0
+make build image=php8.0
 ```
 
 Docker-compose
@@ -10,9 +10,25 @@ Docker-compose
 
 Put your PHP application into `src/` and public files (e.g. `index.php`) into `src/public/`
 
-There are scripts to automate using repo:
+[Makefile](`Makefile`) provides shortcuts. Argument `php` is optional
 
-* `scripts/compose-up.sh` - launching containers
+```shell
+make start php=8.0
+```
+
+For xdebug images
+
+```shell
+make debug php=8.0
+```
+
+To stop containers
+
+```shell
+make stop
+```
+
+
 
 Files organization
 ==================
@@ -47,7 +63,7 @@ Word `USER` in listings should be replaced by your system user name: `id -u -n`
 
 1. Create or add to existing file `/etc/docker/daemon.json`
 
-```javascript
+```json
 {
     "userns-remap": "USER"
 }
