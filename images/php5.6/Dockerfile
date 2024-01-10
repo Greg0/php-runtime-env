@@ -1,7 +1,9 @@
 FROM php:5.6-fpm-alpine
 WORKDIR /var/www
+
+RUN apk add --no-cache linux-headers
 RUN apk update \
-    && apk add git \ 
+    && apk add git \
     libpng-dev \
     icu-dev \
     curl \
@@ -10,13 +12,14 @@ RUN apk update \
     $PHPIZE_DEPS \
     openssh-client \
     libzip-dev \
-    && pecl install redis-2.2.8 \
+    && pear update-channels \
+    && pecl update-channels \
     && docker-php-ext-install bcmath \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure zip --with-libzip=/usr/include \
     && docker-php-ext-configure gd \
     && docker-php-ext-install gd intl exif zip mysqli pdo pdo_mysql  \
-    && docker-php-ext-enable gd intl exif zip redis
+    && docker-php-ext-enable gd intl exif zip
 
 # MailHog
 RUN wget https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64
