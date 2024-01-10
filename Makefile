@@ -46,6 +46,8 @@ build-all:
 	make build image=php8.0-dev
 	make build image=php8.1
 	make build image=php8.1-dev
+	make build image=php8.2
+	make build image=php8.2-dev
 
 push-all:
 	make push image=nginx
@@ -59,5 +61,5 @@ push-all:
 	make push image=php7.4-dev
 	make push image=php8.0
 	make push image=php8.0-dev
-	make push image=php8.1
-	make push image=php8.1-dev
+	make push image=php8.2
+	make push image=php8.2-dev
